@@ -1,4 +1,4 @@
-import { MouseEvent, useState } from "react";
+import { useState } from "react";
 
 interface Props {
   items: string[];
@@ -8,10 +8,6 @@ interface Props {
 
 export default function ListGroup({ items, heading, onSelectItem }: Props) {
   const [selectedIndex, setSelectedIndex] = useState(-1);
-
-  const handleClick = (index: number) => {
-    setSelectedIndex(index);
-  };
 
   return (
     <>
@@ -26,8 +22,8 @@ export default function ListGroup({ items, heading, onSelectItem }: Props) {
                 : "list-group-item"
             }
             key={item}
-            onClick={() => {
-              handleClick(index);
+            onMouseOver={() => {
+              setSelectedIndex(index);
               onSelectItem(item);
             }}
           >
